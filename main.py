@@ -17,7 +17,7 @@ if __name__ == '__main__':
         per_change = (float(sell_price - buy_price)/sell_price)*100
         print("Sell Price is ${} \t Buy Price is ${} \t".format(sell_price, buy_price))
         print("Percentage change in prices are {} %".format(per_change))
-        if per_change > 1:
+        if per_change > settings.PER_CHANGE:
             # place a buy and sell order in both exchanges
             threading.Thread(target=b.place_buy_order, kwargs=({'amount': buy_amount, 'price': buy_price})).start()
             threading.Thread(target=ci.place_sell_order, kwargs=({'amount': sell_amount, 'price': sell_price})).start()
